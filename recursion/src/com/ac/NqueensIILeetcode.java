@@ -2,7 +2,7 @@ package com.ac;
 
 public class NqueensIILeetcode {
     public static void main(String[] args) {
-        System.out.println(totalNQueens(4));
+        System.out.println(totalNQueens(8));
     }
     static int count=0;
     public static int totalNQueens(int n) {

@@ -6,7 +6,7 @@ import java.util.List;
 public class NQueens {
     public static void main(String[] args) {
          int r=0;
-         int[][]chessboard=new int[5][5];
+         int[][]chessboard=new int[8][8];
          printnqueens(r,chessboard);
     }
     static void printnqueens(int r, int[][]chessboard){

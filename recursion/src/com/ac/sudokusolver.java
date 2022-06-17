@@ -85,6 +85,7 @@ public class sudokusolver {
                  matrixfreq[matrno][k-1]++;
                  if (j<8)solve(board, i, j+1, rowfreq, colfreq, matrixfreq, ans);
                  else solve(board,i+1,0,rowfreq,colfreq,matrixfreq,ans);
+                 //backtrack
                  board[i][j]=0;
                  rowfreq[i][k-1]--;
                  colfreq[j][k-1]--;

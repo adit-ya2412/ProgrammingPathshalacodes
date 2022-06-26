@@ -3,7 +3,9 @@ package com.ac;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class tripletsum {
     public static void main(String[] args)throws IOException {
@@ -16,10 +18,14 @@ public class tripletsum {
         }
         Arrays.sort(arr);
         int sum=Integer.parseInt(in.readLine().trim());
-        printtriplets(arr,sum);
+        List<List<Integer>>ans=printtriplets(arr,sum);
+        for (List<Integer>a:ans) {
+            System.out.println(a);
+        }
 
     }
-    static void printtriplets(int[]arr,int sum) {
+    static List<List<Integer>> printtriplets(int[]arr, int sum) {
+        List<List<Integer>>ans=new ArrayList<>();
         int fix = 0, l, h;
         for (int i = 0; i < arr.length; i++) {
             if (i > 0 && arr[i] == arr[i - 1]) continue;
@@ -30,7 +36,11 @@ public class tripletsum {
                 while (l < h) {
                     int curr = arr[l] + arr[h];
                     if (curr == fix) {
-                        System.out.println(arr[i] + "," + arr[l] + "," + arr[h]);
+                        List<Integer>temp=new ArrayList<>();
+                        temp.add(arr[i]);
+                        temp.add(arr[l]);
+                        temp.add(arr[h]);
+                        ans.add(new ArrayList<>(temp));
                         if (arr[l]==arr[h])break;
                         int v1 = arr[l];
                         while (arr[l] == v1) {
@@ -48,5 +58,6 @@ public class tripletsum {
                 }
             }
         }
+        return ans;
     }
 }

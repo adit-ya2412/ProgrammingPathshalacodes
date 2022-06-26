@@ -10,13 +10,15 @@ import java.util.List;
 public class Pairdifference {
     public static void main(String[] args)throws IOException {
         BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
-        int n=Integer.parseInt(in.readLine().trim());
+        String[]input=(in.readLine().trim()).split("\\s+");
+        int n=Integer.parseInt(input[0]);
         int[]arr=new int[n];
         String[]elements=(in.readLine().trim().split("\\s+"));
         for (int i = 0; i <n ; i++) {
             arr[i]=Integer.parseInt(elements[i]);
         }
-        int difference=Integer.parseInt(in.readLine().trim());
+        Arrays.sort(arr);
+        int difference=Integer.parseInt(input[1]);
         System.out.println(pairdifference(arr,difference));
     }
     static int pairdifference(int[]arr,int difference){
@@ -35,7 +37,8 @@ public class Pairdifference {
             }else {
                 int c1=0,c2=0,p=arr[l],q=arr[r];
                 if (difference==0){
-                    while (arr[l]==p){
+
+                    while (l< arr.length&&arr[l]==p){
                         l++;r++;
                         c1++;
                     }

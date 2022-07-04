@@ -12,10 +12,10 @@ public class addornotadd {
         int n=Integer.parseInt(inputs[0]);
         long k=Long.parseLong(inputs[1]);
         String[]ele=(br.readLine().trim()).split("\\s+");
-        int[]arr=new int[n];
+        long[]arr=new long[n];
 
         for (int i = 0; i <n; i++) {
-            arr[i]=Integer.parseInt(ele[i]);
+            arr[i]=Long.parseLong(ele[i]);
         }
         Arrays.sort(arr);
         long[]prefsum=new long[n];
@@ -23,19 +23,23 @@ public class addornotadd {
         for (int i = 1; i <n ; i++) {
             prefsum[i]=prefsum[i-1]+arr[i];
         }
-        int ans=-1;
+        long ans=-1;
 
-        int maxrepeat=0;
-        for (int i = 1; i <n ; i++) {
+        long maxrepeat=0;
+        for (int i = n-1; i >=0 ; i--) {
             int indexfound=binarysearch(i,prefsum,k,arr);
-            if (i-indexfound+1>ans){
-                ans=i-indexfound+1;
+            int tcnt=i-indexfound+1;
+            if (tcnt==ans){
+                maxrepeat=Math.min(maxrepeat,arr[i]);
+            }
+            if (tcnt>ans){
+                ans=tcnt;
                 maxrepeat=arr[i];
             }
         }
         System.out.println(ans+" "+maxrepeat);
     }
-    static int binarysearch(int st,long[]prefsum,long k,int[]arr){
+    static int binarysearch(int st,long[]prefsum,long k,long[]arr){
         int l=0;
         int h=st;
         int result=0;
@@ -43,12 +47,13 @@ public class addornotadd {
         long required;
         while (l<=h){
             int mid=l+(h-l)/2;
+            int diff=st-mid+1;
             if (mid==0){
-                have=prefsum[st-1];
-                required=(st-mid)*arr[st];
+                have=prefsum[st];
+                required=(diff)*arr[st];
             }else {
-                have=prefsum[st-1]-prefsum[mid-1];
-                required=(st-mid)*arr[st];
+                have=prefsum[st]-prefsum[mid-1];
+                required=(diff)*arr[st];
 
             }
             if (have+k>=required){

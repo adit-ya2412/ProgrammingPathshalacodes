@@ -17,13 +17,16 @@ public class specialelection {
                 arr[i]=Integer.parseInt(elements[i]);
             }
             int[]votes=counnofvotes(arr);
-            System.out.println(Arrays.toString(votes));
+            for(int i:votes){
+                System.out.print(i+" ");
+            }
+            System.out.println();
             t--;
         }
 
     }
     static int[]counnofvotes(int[]arr) {
-        int[] prefsum = new int[arr.length];
+        long[] prefsum = new long[arr.length];
         prefsum[0] = arr[0];
         for (int i = 1; i < arr.length; i++) {
             prefsum[i] = prefsum[i - 1] + arr[i];
@@ -48,7 +51,7 @@ public class specialelection {
         return ans;
 
     }
-    static void findright(int index,int[]ans,int[]prefsum,int[]arr){
+    static void findright(int index,int[]ans,long[]prefsum,int[]arr){
         int l=index+1;
         int h=arr.length-1;
         while (l<=h){
@@ -60,8 +63,10 @@ public class specialelection {
             }
         }
         ans[h]++;
+        ans[index]--;
+
     }
-    static void findleft(int index,int[]ans,int[]prefsum,int[]arr){
+    static void findleft(int index,int[]ans,long[]prefsum,int[]arr){
        int h=index-1;
        int l=0;
        while (l<=h) {
@@ -72,7 +77,9 @@ public class specialelection {
                l = mid + 1;
            }
        }
-           if (l>0)ans[l-1]--;
+       if (l!=0)ans[l-1]--;
+       ans[index-1]++;
+
        }
 
 

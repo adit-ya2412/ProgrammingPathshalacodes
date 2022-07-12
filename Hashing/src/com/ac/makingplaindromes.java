@@ -91,7 +91,7 @@ public class makingplaindromes {
         HashMap<String,Boolean>exists=new HashMap<>();
         for(int i=0;i<words.length;i++){
             if((maps.get("")!=null)&&(maps.get("")!=i)&&(ispalindrome(words[i],0,words[i].length()))&&(exists.get(i+""+maps.get(""))==null)){
-                String t1=i+""+maps.get("");
+                String t1=i+","+maps.get("");
                 exists.put(t1,true);
                 List<Integer>temp=new ArrayList<>();
                 temp.add(i);
@@ -101,13 +101,16 @@ public class makingplaindromes {
                 temp.remove(temp.size()-1);
                 temp.add(maps.get(""));
                 temp.add(i);
+                t1="";
+                t1=maps.get("")+","+i;
+                exists.put(t1,true);
                 ans.add(new ArrayList<>(temp));
             }
             String prefix;
             for(int j=0;j<words[i].length();j++){
                 prefix=words[i].substring(0,j+1);
-                if(maps.get(prefix)!=null&&(maps.get(prefix)!=i)&&ispalindrome(words[i],j+1,words[i].length())&&(exists.get(i+""+maps.get(prefix))==null)){
-                    String t2=i+""+maps.get(prefix);
+                if(maps.get(prefix)!=null&&(maps.get(prefix)!=i)&&ispalindrome(words[i],j+1,words[i].length())&&(exists.get(i+","+maps.get(prefix))==null)){
+                    String t2=i+","+maps.get(prefix);
                     exists.put(t2,true);
                     List<Integer>temp=new ArrayList<>();
                     temp.add(i);
@@ -118,8 +121,8 @@ public class makingplaindromes {
             String suffix;
             for(int j=words[i].length()-1;j>=0;j--){
                 suffix=words[i].substring(j,words[i].length());
-                if(maps.get(suffix)!=null&&(maps.get(suffix)!=i)&&(ispalindrome(words[i],0,j))&&(exists.get(maps.get(suffix)+""+i)==null)){
-                    String t3=maps.get(suffix)+""+i;
+                if(maps.get(suffix)!=null&&(maps.get(suffix)!=i)&&(ispalindrome(words[i],0,j))&&(exists.get(maps.get(suffix)+","+i)==null)){
+                    String t3=maps.get(suffix)+","+i;
                     exists.put(t3,true);
                     List<Integer>temp=new ArrayList<>();
                     temp.add(maps.get(suffix));

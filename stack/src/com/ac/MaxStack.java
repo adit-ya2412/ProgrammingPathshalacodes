@@ -20,8 +20,7 @@ public class MaxStack {
     public  static List<Integer> getMax(List<String>operations){
         List<Integer>ans=new ArrayList<>();
         Stack<Long>sta=new Stack<>();
-        sta.
-        String[] t;
+        String []t;
         long currmax=0;
         for (int i = 0; i <operations.size() ; i++) {
             t=operations.get(i).trim().split("\\s+");

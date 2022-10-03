@@ -28,6 +28,7 @@ public class iterativeinorder {
             }
         }
     }
+
     static void inorderwithoutflag(TreeNode root){
         Stack<TreeNode>st=new Stack<>();
         while (root.left!=null){
@@ -40,7 +41,7 @@ public class iterativeinorder {
             if (temp.right!=null){
                 while (temp.right!=null){
                     st.push(temp);
-                    temp=temp.right;
+                    temp=temp.left;
                 }
             }
         }

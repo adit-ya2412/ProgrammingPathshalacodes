@@ -45,6 +45,23 @@ public class reversenodesinK {
         head.next=reverse(curr,k,(size-k));
         return prev;
     }
+//    static Node ReverseKNodes(Node head,int k){
+//        int size=sizeoflist(head);
+//        Node ans=reversekk(head,size,k);
+//        return ans;
+//    }
+//    static Node reversekk(Node head,int size,int k){
+//
+//    }
+    static int sizeoflist(Node head){
+        Node temp=head;
+        int cnt=0;
+        while (temp!=null){
+            temp=temp.next;
+            cnt++;
+        }
+        return cnt;
+    }
     static int sizeoflist(ListNode head){
         ListNode temp=head;
         int cnt=0;

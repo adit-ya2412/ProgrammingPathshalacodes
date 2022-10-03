@@ -42,7 +42,7 @@ public class arthurandtable {
                 legsoflengthindi.put(table[i],temp);
             }
         }
-
+ return -1;
 
     }
 }
